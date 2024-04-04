@@ -1,0 +1,13 @@
+.pokemon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    width: 1070.24px;
+    height: 848px;
+    top: 174px;
+    left: 109px;
+    align-items: center;
+    justify-content: center;  
+  }
+  

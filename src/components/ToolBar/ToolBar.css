@@ -1,0 +1,18 @@
+.tool-bar {
+    width: 976px;
+    height: 67px;
+    background-color: #020166
+  }
+
+.home-button {
+    background-color: #020166;
+    color: white;
+    float: right;
+}
+
+.favorites-button {
+    background-color: #020166;
+    color: white;
+    float: right;
+
+}
