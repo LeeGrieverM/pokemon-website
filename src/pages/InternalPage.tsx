@@ -1,15 +1,18 @@
 import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import ToolBar from '../../components/ToolBar/ToolBar';
+import PokemonCard from '../shared/components/PokemonCard';
 
 export default function InternalPage() {
     const {pokemonId} = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    console.log(pokemonId);
 
   return (
     <div>
-    <ToolBar/>
     Pokemon Page
+    {/* <PokemonCard >
+
+    </PokemonCard> */}
     </div>
   )
 }
