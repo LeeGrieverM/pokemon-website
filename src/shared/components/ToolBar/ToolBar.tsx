@@ -1,13 +1,12 @@
 import React from 'react'
 import {useNavigate} from "react-router-dom";
-import {paths} from '../data/constants';
-import { StyledButton, StyledToolBar } from '../data/styles';
-import logo from '../data/logo.svg';
+import {paths} from '../../data/constants';
+import { StyledButton, StyledToolBar } from './styles';
+import logo from '../../data/logo.svg';
 export default function ToolBar() {
 
   const navigate = useNavigate();
   const onHomeClick = ()=> {
-    console.log("here");
     navigate(paths.root);
   }
   return (
