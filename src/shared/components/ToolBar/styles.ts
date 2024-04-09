@@ -9,18 +9,21 @@ export const StyledContainer = styled.div`
     padding: 4px 110px;
 
 `;
-
-export const StyledButton = styled.button`
-    background-color: #020166;
+export const StyledButton = styled.button<{color: string}>`
+    background-color: ${( props ) => (props.color)};
     font-family: Roboto, sans-serif;
     color: white;
     float: right;
     text-align: center;
-    line-height: 60px;
+    line-height: 55px;
     font-size: 20px;
     cursor: pointer;
     border: none;
-    padding-left:30px;
-    padding-right: 10px;
+    width: 100px;
+    display: block;
+
 `;
+
+
+  
 

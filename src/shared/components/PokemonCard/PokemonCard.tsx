@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Pokemon} from '../../data/Pokemon'
 import {useNavigate} from "react-router-dom";
+import { capitalizeFirstLetter, computePokemonNumber } from '../../utils/functions';
 import {
   StyledPokemonCard,
   StyledPokemonButton,
@@ -13,9 +14,8 @@ import {
 
 const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: boolean}> = (props) => {
     const inPokemonPage = props.inPokemonPage;
-    let pokemonId: string = props.pokemon.id.toString();
-    pokemonId = '#'+ ('000'+pokemonId).slice(-3);
-    let pokemonName = props.pokemon.name.charAt(0).toUpperCase() + props.pokemon.name.slice(1);
+    const pokemonName: string = capitalizeFirstLetter(props.pokemon.name);
+    const pokemonId: string = computePokemonNumber(props.pokemon.id);
 
     const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: bo
     
   return (
     <>
-    <StyledPokemonCard className={props.className}>
+    <StyledPokemonCard className={props.className} inPokemonPage={inPokemonPage}>
     <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage}>
     <StyledpokemonId>
       {pokemonId}

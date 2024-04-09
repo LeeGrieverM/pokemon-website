@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Pokemon} from '../../shared/data/Pokemon';
+import ToolBar from '../../shared/components/ToolBar/ToolBar';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
 import {
   StyledPokemonGrid,
@@ -17,6 +18,8 @@ export default function HomePage() {
   const [isMounted, setIsMounted] = useState<boolean>(false); // Track if component is mounted
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [lastSearches, setLastSearches] = useState<string[]>([]);
+  const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false); // Track if search bar is focused
+
 
   useEffect(() => {
     if (isMounted) { // Fetch data only after component mounts initially
@@ -34,6 +37,9 @@ export default function HomePage() {
       const results = await Promise.all(data.results.map(async (result: {url: string}) => {
       const pokemonResponse = await fetch(result.url);
       const pokemonData = await pokemonResponse.json();
+      const speciesResponse = await fetch(pokemonData.species.url);
+      const speciesData = await speciesResponse.json();
+      const description = speciesData.flavor_text_entries.find((entry: any) => entry.language.name === 'en')?.flavor_text;
       
     return {
       id: pokemonData.id,
@@ -45,7 +51,8 @@ export default function HomePage() {
       })),
       types: pokemonData.types.map((type: any) => ({
         name: type.type.name,
-      }))
+      })),
+      description: description,
     } as Pokemon;
   }));
 
@@ -64,11 +71,19 @@ const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
   setSearchQuery(event.target.value); // Update search query
 };
 
+const handleSearchFocus = (): void => {
+  setIsSearchFocused(true);
+};
+
+const handleSearchBlur = (): void => {
+  setIsSearchFocused(false);
+  addToLastSearches(searchQuery);
+};
+
 // Filter Pokemon data based on search query
 const filteredPokemonData = pokemonData.filter(pokemon =>
   pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
 );
-
 
 // Filter last searches based on search query
 const filteredLastSearches = lastSearches.filter(search =>
@@ -94,15 +109,17 @@ const renderLastSearchOptions = (): JSX.Element[] => {
 };
 
 return (
+  <>
+  <ToolBar pageType='Home'/>
   <StyledContainer>
     <StyledSearchContainer>
       <StyledSearchBar
           type="text"
           value={searchQuery}
           onChange={handleSearchChange}
-          onBlur={() => addToLastSearches(searchQuery)} // Add current search to last searches when search bar loses focus
-        />
-        {searchQuery && filteredLastSearches.length > 0 && (
+          onFocus={handleSearchFocus}
+          onBlur={handleSearchBlur}        />
+        {isSearchFocused && filteredLastSearches.length > 0 && (
         <div>
           <p>Last searches:</p>
           {renderLastSearchOptions()}
@@ -121,5 +138,6 @@ return (
     Load More...
     </StyledLoadMoreButton>
   </StyledContainer>
+  </>
 );
 }

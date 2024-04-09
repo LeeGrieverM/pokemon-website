@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  padding: 50px 25px;
+  padding: 50px 50px;
   border: solid;
 `;
 
@@ -53,6 +53,7 @@ export const StyledPokemonGrid = styled.div`
   flex-wrap: wrap;
   justify-content: center;  
   padding-top: 30px;
+  gap: 10px;
 `;
 
 export const StyledLoadMoreButton = styled.button`

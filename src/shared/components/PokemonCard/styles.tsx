@@ -1,21 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledPokemonCard = styled.div`
+export const StyledPokemonCard = styled.div<{inPokemonPage: boolean}>`
     displey: flex;
     flex-direction: column;
     align-items: center;
     width: 267.29px;
-    background-color: #F7F7F9;
-    margin: 13px;
-    box-shadow: 2px 2px 4px 0px #00000026; 
     border-radius: 8px;
-    height: auto;
+    height: 340px;
+    ${(props) => !props.inPokemonPage && css`
+        box-shadow: 2px 2px 4px 0px #00000026;
+        background-color: #F7F7F9;
+        height: auto;
+    `}
 `;
 
 export const StyledPokemonButton = styled.button`
     width: 267.29px;
     height: auto;
-    background-Color: 'transparent';
+    background-Color: transparent;
     cursor: pointer;
     border: none;
 `;
@@ -71,7 +73,7 @@ export const TypesContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1px; 
-  border: 2px solid orange;
+//   border: 2px solid orange;
   height: auto;
 `;
 
@@ -86,5 +88,5 @@ export const Type = styled.p<{ type: string }>(({ type }) => ({
   font: 'Roboto',
   fontSize: '22px',
   textAlign: 'center',
-  border: '3px solid green',
+//   border: '3px solid green',
 }));
