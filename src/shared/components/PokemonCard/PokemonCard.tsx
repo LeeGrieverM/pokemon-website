@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import {Pokemon} from '../../data/Pokemon'
 import {useNavigate} from "react-router-dom";
 import { capitalizeFirstLetter, computePokemonNumber } from '../../utils/functions';
@@ -13,20 +13,20 @@ import {
 } from './styles';
 
 const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: boolean}> = (props) => {
-    const inPokemonPage = props.inPokemonPage;
-    const pokemonName: string = capitalizeFirstLetter(props.pokemon.name);
-    const pokemonId: string = computePokemonNumber(props.pokemon.id);
+  const { inPokemonPage, pokemon } = props;
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const pokemonName: string = useMemo(() => capitalizeFirstLetter(pokemon.name), [pokemon.name]);
+  const pokemonId: string = useMemo(() => computePokemonNumber(pokemon.id), [pokemon.id]);
 
-    const onPokemonClick = () => {
-      navigate(`/pokemon/:${props.pokemon.id}`, {state: {pokemon: props.pokemon}});
-    }
+  const onPokemonClick = () => {
+    navigate(`/pokemon/:${props.pokemon.id}`, {state: {pokemon}});
+  }
     
   return (
     <>
     <StyledPokemonCard className={props.className} inPokemonPage={inPokemonPage}>
-    <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage}>
+    <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage} inPokemonPage={inPokemonPage}>
     <StyledpokemonId>
       {pokemonId}
     </StyledpokemonId>

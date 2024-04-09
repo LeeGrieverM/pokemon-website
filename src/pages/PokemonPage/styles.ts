@@ -6,7 +6,6 @@ export const StyledContainer = styled.div`
   display: flex;
   width: 844px;
   height: 340px;
-  // border: 5px solid green;   
   margin: auto;
   margin-top: 70px;
   background-color: #F7F7F9;
@@ -17,8 +16,6 @@ export const StyledContainer = styled.div`
 export const LeftContainer = styled.div`
   display: flex;
   height: 340px;
-  // border: 1px solid red;
-  // border-right: 1px solid #D7D7D7;
   position: relative;
 
   &::after {
@@ -35,7 +32,6 @@ export const LeftContainer = styled.div`
 export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // border: 2px solid red;
   height: 340px;
   gap: 10px;
   padding-left: 30px;
@@ -47,7 +43,6 @@ export const TextContainer = styled.div`
   flex-direction: column;
   height: auto;
   width: 100%;
-  // border: 5px solid yellow; 
 `;
 
 export const Title = styled.h1`
@@ -57,8 +52,6 @@ export const Title = styled.h1`
     line-height: 25.78px;
     text-align: left;
     color: #373299;
-    // border: 2px solid black;
-
 `;
 
 export const DescriptionContent = styled.div`
@@ -68,14 +61,11 @@ export const DescriptionContent = styled.div`
   line-height: 21.09px;
   text-align: left;
   color: #020166;
-  // border: 2px solid black;
 `;
 
 export const StatsContentContainer = styled.div`
   display: flex;
-  // border: 2px solid black;
   column-gap: 60px;
-
   margin-top: -10px;
 `;
 
@@ -87,7 +77,6 @@ export const StatsContent = styled.div`
   text-align: left;
   color: #020166;
   align-content: top;
-  // border: 2px solid pink;
   margin-top: -12px;
 `;
 

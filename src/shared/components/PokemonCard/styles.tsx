@@ -14,12 +14,14 @@ export const StyledPokemonCard = styled.div<{inPokemonPage: boolean}>`
     `}
 `;
 
-export const StyledPokemonButton = styled.button`
+export const StyledPokemonButton = styled.button<{inPokemonPage: boolean}>`
     width: 267.29px;
     height: auto;
     background-Color: transparent;
-    cursor: pointer;
     border: none;
+    ${(props) => !props.inPokemonPage && css`
+      cursor: pointer;
+    `}
 `;
 
 export const StyledpokemonId = styled.p`
@@ -73,7 +75,6 @@ export const TypesContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 1px; 
-//   border: 2px solid orange;
   height: auto;
 `;
 
@@ -88,5 +89,4 @@ export const Type = styled.p<{ type: string }>(({ type }) => ({
   font: 'Roboto',
   fontSize: '22px',
   textAlign: 'center',
-//   border: '3px solid green',
 }));
