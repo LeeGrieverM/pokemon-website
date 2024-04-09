@@ -48,12 +48,12 @@ export default function HomePage() {
   );
   }, [pokemonData, searchQuery]);
 
-  // // Filter last searches based on search query
-  // const filteredLastSearches = useMemo(()=> { 
-  //   return lastSearches.filter(search =>
-  //     search.toLowerCase().includes(searchQuery.toLowerCase())
-  //   );
-  // }, [setLastSearches]);
+  // Filter last searches based on search query
+  const filteredLastSearches = useMemo(()=> { 
+    return lastSearches.filter(search =>
+      search.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [setLastSearches]);
 
   const handleLoadMore = (): void => {
     setOffset((prevOffset) => prevOffset + 12);

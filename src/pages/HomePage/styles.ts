@@ -95,10 +95,6 @@ export const LastSearchesTitle = styled.div`
   text-align: left;
 `;
 
-// export const LastSearchesTitleContainer = styled.div`
-//   border: 4px solid pink;
-// `;
-
 export const LastSearchesContainer = styled.div`
   border: 4px solid blue;
 

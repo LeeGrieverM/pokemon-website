@@ -13,9 +13,6 @@ import { colors } from '../../data/constants';
 
 const ToolBar: React.FC<{pageType: string}> = (props) => {
   const navigate = useNavigate();
-  // const [homeColor, setHomeColor] = useState<string>(colors.ToolBar);
-  // const [favoritesColor, setFavoritesColor] = useState<string>(colors.ToolBar);
-
   const getHomeColor = (pageType: string) => {
     if (props.pageType === 'Home'){
       return colors.pressedPageButton;
@@ -26,16 +23,6 @@ const ToolBar: React.FC<{pageType: string}> = (props) => {
   }
   const homeColor: string = useMemo(() => getHomeColor(props.pageType), [props.pageType]);
 
-  // useEffect(() => {
-  //   if (props.pageType === 'Home'){
-  //     setHomeColor(colors.pressedPageButton);
-  //   }
-  //   else if (props.pageType === 'Favorites'){
-  //     setFavoritesColor(colors.pressedPageButton);
-  //   }
-  // }, [homeColor, favoritesColor]);
-  
- 
   const onHomeClick = ()=> {
     navigate(paths.root);
   }
