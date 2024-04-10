@@ -1,4 +1,3 @@
-import ToolBar from "../components/ToolBar/ToolBar";
 
 export const paths = {
     root: "/",

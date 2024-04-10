@@ -52,7 +52,7 @@ export const SearchOption = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
-  letter-spacing: 0.10000000149011612px;
+  letter-spacing: 0.1px;
   text-align: left;
   color: #5A5A89;
 `;

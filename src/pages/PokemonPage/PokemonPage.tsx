@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useMemo} from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
 import { PokemonStat } from '../../shared/data/Pokemon';
@@ -20,18 +20,18 @@ export default function PokemonPage() {
   const location = useLocation();
   const pokemon = location.state?.pokemon;
 
-  const formatStats = (startIndex: number) => {
-    return pokemon.stats.slice(startIndex, startIndex+3).map((stat: PokemonStat) =>
-     <p key={stat.name}>
-      {`${capitalizeFirstLetter(stat.name)}: ${stat.value}`}
+  const formatStats = useCallback((startIndex: number) => {
+    return pokemon.stats.slice(startIndex, startIndex + 3).map((stat: PokemonStat) =>
+      <p key={stat.name}>
+        {`${capitalizeFirstLetter(stat.name)}: ${stat.value}`}
       </p>);
-  };
+  }, [pokemon]);
 
-  const computeTotalStats = () => {
+  const computeTotalStats = useMemo(() => {
     return <p key={pokemon.id}>
-    {`Total: ${pokemon.stats.reduce((sum: number, stat: PokemonStat) => sum + stat.value, 0).toString()}`}
+      {`Total: ${pokemon.stats.reduce((sum: number, stat: PokemonStat) => sum + stat.value, 0).toString()}`}
     </p>;
-  }; 
+  }, [pokemon]);
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function PokemonPage() {
         {formatStats(3)}
         </StatsContent>
         <StatsContent>
-        {computeTotalStats()}
+        {computeTotalStats}
         </StatsContent>
       </StatsContentContainer>
     </TextContainer>
