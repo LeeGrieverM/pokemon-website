@@ -35,7 +35,7 @@ const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: bo
     <StyledpokemonName>
     {pokemonName}
     </StyledpokemonName>
-    {inPokemonPage && ( // Conditionally render Pokemon types if inPokemonPage is true
+    {inPokemonPage && ( 
       <TypesContainer>
         {props.pokemon.types.map((type, index) => (
           <Type key={type.name} type={type.name}>

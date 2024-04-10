@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   padding: 50px 50px;
-  border: solid;
 `;
 
 export const SearchContainer = styled.div`
@@ -43,12 +42,14 @@ export const SearchButton = styled.button`
 
 export const SearchOption = styled.div`
   padding: 8px;
-  cursor: pointer;
   background-color: #f5f5f5;
-  border: 2px soliid yellow;
-  &:hover {
-    background-color: #e0e0e0;
-  }
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+  color: #5A5A89;
 `;
 
 export const PokemonGrid = styled.div`
@@ -61,7 +62,7 @@ export const PokemonGrid = styled.div`
 
 export const LoadMoreButton = styled.button`
   font: Roboto, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   text-align: center;
@@ -84,34 +85,30 @@ export const FloatingContainer = styled.div`
   display: flex;
   flex-direction: column;
   color: #5A5A89;
-  border: 4px solid green;
-
+  padding-top: 10px;
 `;
 
 export const LastSearchesTitle = styled.div`
-  font-size: 12px;
+  font-size: 14x;
   font-weight: 600;
   color: #373299;
   text-align: left;
 `;
 
-export const LastSearchesContainer = styled.div`
-  border: 4px solid blue;
-
-`;
-
 export const ClearButton = styled.button`
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   float: right;
   color: #373299;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 export const DeleteSearchButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   float: right;
-  border: 2px solid pink;
+  color: gray;
+  border: none;
 `;

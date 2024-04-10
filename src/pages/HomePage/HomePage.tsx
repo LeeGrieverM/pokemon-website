@@ -11,7 +11,6 @@ import {
   SearchButton,
   SearchContainer,
   SearchOption,
-  LastSearchesContainer,
   LastSearchesTitle,
   FloatingContainer,
   ClearButton,
@@ -48,13 +47,6 @@ export default function HomePage() {
   );
   }, [pokemonData, searchQuery]);
 
-  // Filter last searches based on search query
-  const filteredLastSearches = useMemo(()=> { 
-    return lastSearches.filter(search =>
-      search.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  }, [setLastSearches]);
-
   const handleLoadMore = (): void => {
     setOffset((prevOffset) => prevOffset + 12);
   };
@@ -69,30 +61,24 @@ export default function HomePage() {
 
   const handleSearchBlur = (): void => {
     setIsSearchFocused(false);
-    addToLastSearches(searchQuery);
   };
 
-
+  const handleSearchClick = (): void => {
+    addToLastSearches(searchQuery);
+  };
+ 
   // Add current search query to last searches
   const addToLastSearches = (search: string): void => {
-    console.log("in add, search is: ", search);
     setLastSearches(prevSearches => {
       const updatedSearches = [...prevSearches.filter(s => s !== search), search];
       return updatedSearches.length > 3 ? updatedSearches.slice(-3) : updatedSearches; // Keep only the last 3 searches
     });
   };
 
-  const renderLastSearchOptions = useCallback((): JSX.Element[] => {
-    console.log("in render");
-    return lastSearches.map((search, index) => (
-      <SearchOption key={index}>
-        {search}
-        <DeleteSearchButton>
-          x
-        </DeleteSearchButton>
-      </SearchOption>
-    ));
-  }, [setLastSearches]);
+  // Remove current search query from last searches
+  const removeFromLastSearches = (search: string): void => {
+    setLastSearches(prevSearches => prevSearches.filter(s => s !== search));
+  };
 
 return (
   <>
@@ -110,18 +96,22 @@ return (
         <FloatingContainer>
           <LastSearchesTitle>
           RECENT SEARCHES
-          <ClearButton>
-              CLEAR
-            </ClearButton>
+          <ClearButton onMouseDown={()=>setLastSearches([])}>
+            CLEAR
+          </ClearButton>
           </LastSearchesTitle>
-          <LastSearchesContainer>
-            {renderLastSearchOptions()}
-          </LastSearchesContainer>
+          {lastSearches.map((search, index) => (
+          <SearchOption key={index} onClick={() => setSearchQuery(search)}>
+          {search}
+          <DeleteSearchButton onMouseDown={()=>removeFromLastSearches(search)}>
+           X
+          </DeleteSearchButton>
+          </SearchOption>
+          ))}
         </FloatingContainer>
-      )}
+        )}
         </SearchBarContainer>
-
-        <SearchButton>
+        <SearchButton onClick={()=>handleSearchClick()}>
           Search
         </SearchButton>
     </SearchContainer>
