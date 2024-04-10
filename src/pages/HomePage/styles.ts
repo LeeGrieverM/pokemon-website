@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  padding: 50px 25px;
-  border: solid;
+  padding: 50px 50px;
 `;
 
-export const StyledSearchContainer = styled.div`
+export const SearchContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;  
 `;
 
-export const StyledSearchBar = styled.input`
+export const SearchBar = styled.input`
+  display: flex;
+  flex-direction: column;
   background-color: #f7f7f9;
   border-radius: 9px;
   border: 1px solid #02016680;
@@ -26,7 +27,7 @@ export const StyledSearchBar = styled.input`
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
 `;
-export const StyledSearchButton = styled.button`
+export const SearchButton = styled.button`
   width: 87px;
   height: 36px;
   border-radius: 9px;
@@ -36,28 +37,32 @@ export const StyledSearchButton = styled.button`
   font-size: 18px;
   font-weight: 400;
   text-align: center;
-`;
-
-export const StyledSearchOption = styled.div`
-  padding: 8px;
   cursor: pointer;
-  background-color: #f5f5f5;
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
 `;
 
-export const StyledPokemonGrid = styled.div`
+export const SearchOption = styled.div`
+  padding: 8px;
+  background-color: #f5f5f5;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+  color: #5A5A89;
+`;
+
+export const PokemonGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;  
   padding-top: 30px;
+  gap: 10px;
 `;
 
-export const StyledLoadMoreButton = styled.button`
+export const LoadMoreButton = styled.button`
   font: Roboto, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 21px;
   text-align: center;
@@ -69,4 +74,41 @@ export const StyledLoadMoreButton = styled.button`
   border-radius: 9px;
   display: block;
   cursor: pointer;
+`;
+
+export const SearchBarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FloatingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #5A5A89;
+  padding-top: 10px;
+`;
+
+export const LastSearchesTitle = styled.div`
+  font-size: 14x;
+  font-weight: 600;
+  color: #373299;
+  text-align: left;
+`;
+
+export const ClearButton = styled.button`
+  font-size: 14px;
+  font-weight: 600;
+  float: right;
+  color: #373299;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+export const DeleteSearchButton = styled.button`
+  background-color: transparent;
+  cursor: pointer;
+  float: right;
+  color: gray;
+  border: none;
 `;

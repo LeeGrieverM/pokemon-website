@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, {useMemo} from 'react'
 import {Pokemon} from '../../data/Pokemon'
 import {useNavigate} from "react-router-dom";
+import { capitalizeFirstLetter, computePokemonNumber } from '../../utils/functions';
 import {
   StyledPokemonCard,
   StyledPokemonButton,
@@ -12,21 +13,20 @@ import {
 } from './styles';
 
 const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: boolean}> = (props) => {
-    const inPokemonPage = props.inPokemonPage;
-    let pokemonId: string = props.pokemon.id.toString();
-    pokemonId = '#'+ ('000'+pokemonId).slice(-3);
-    let pokemonName = props.pokemon.name.charAt(0).toUpperCase() + props.pokemon.name.slice(1);
+  const { inPokemonPage, pokemon } = props;
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const pokemonName: string = useMemo(() => capitalizeFirstLetter(pokemon.name), [pokemon.name]);
+  const pokemonId: string = useMemo(() => computePokemonNumber(pokemon.id), [pokemon.id]);
 
-    const onPokemonClick = () => {
-      navigate(`/pokemon/:${props.pokemon.id}`, {state: {pokemon: props.pokemon}});
-    }
+  const onPokemonClick = () => {
+    navigate(`/pokemon/:${props.pokemon.id}`, {state: {pokemon}});
+  }
     
   return (
     <>
-    <StyledPokemonCard className={props.className}>
-    <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage}>
+    <StyledPokemonCard className={props.className} inPokemonPage={inPokemonPage}>
+    <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage} inPokemonPage={inPokemonPage}>
     <StyledpokemonId>
       {pokemonId}
     </StyledpokemonId>
@@ -35,7 +35,7 @@ const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: bo
     <StyledpokemonName>
     {pokemonName}
     </StyledpokemonName>
-    {inPokemonPage && ( // Conditionally render Pokemon types if inPokemonPage is true
+    {inPokemonPage && ( 
       <TypesContainer>
         {props.pokemon.types.map((type, index) => (
           <Type key={type.name} type={type.name}>

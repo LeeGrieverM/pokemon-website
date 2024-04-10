@@ -1,6 +1,11 @@
-const paths = {
+import ToolBar from "../components/ToolBar/ToolBar";
+
+export const paths = {
     root: "/",
     pokemon: "/pokemon/:pokemonId"
 };
 
-module.exports = {paths}
+export const colors = {
+    pressedPageButton: '#94D97E',
+    ToolBar: '#020166'
+};

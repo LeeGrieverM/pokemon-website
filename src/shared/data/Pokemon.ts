@@ -14,5 +14,6 @@ export interface Pokemon {
   };
   stats: PokemonStat[];
   types: PokemonType[];
+  description: string;
 }
   
