@@ -37,7 +37,6 @@ export default function PokemonPage() {
     <>
     <ToolBar pageType='Pokemon'/>
     <StyledContainer>
-    
     <LeftContainer>
       <PokemonCard pokemon={pokemon} className={'pokemon-card'} inPokemonPage={true}/>
     </LeftContainer>

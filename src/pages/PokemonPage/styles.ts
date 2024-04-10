@@ -11,6 +11,13 @@ export const StyledContainer = styled.div`
   background-color: #F7F7F9;
   box-shadow: 2px 2px 4px 0px #00000026; 
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 320px;
+    height: 700px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const LeftContainer = styled.div`
@@ -21,12 +28,22 @@ export const LeftContainer = styled.div`
   &::after {
     content: '';
     position: absolute;
-    top: 30px; /* Align the line to the top */
-    bottom: 30px; /* Extend the line till the bottom */
-    right: -2px; /* Adjust the position to the right of the border */
-    width: 1.5px; /* Set the width of the line */
-    background-color: #D7D7D7; /* Set the color of the line */
+    top: 30px; 
+    bottom: 30px; 
+    right: -2px; 
+    width: 1.5px; 
+    background-color: #D7D7D7; 
   }
+
+  @media (max-width: 768px) {
+    &::after {
+      top: auto; 
+      bottom: 10px; 
+      right: 0;
+      width: 100%; 
+      height: 1.5px; 
+      background-color: #D7D7D7; 
+    }
 `;
 
 export const RightContainer = styled.div`
@@ -36,6 +53,17 @@ export const RightContainer = styled.div`
   gap: 10px;
   padding-left: 30px;
   padding-top: 25px;
+
+  @media (max-width: 768px) {
+    align-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    row-gap: 15px;
+    height: 310px;
+
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -43,6 +71,11 @@ export const TextContainer = styled.div`
   flex-direction: column;
   height: auto;
   width: 100%;
+  @media (max-width: 768px) {
+    align-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -61,12 +94,23 @@ export const DescriptionContent = styled.div`
   line-height: 21.09px;
   text-align: left;
   color: #020166;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
 `;
 
 export const StatsContentContainer = styled.div`
   display: flex;
   column-gap: 60px;
   margin-top: -10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    row-gap: 0px;
+    margin-top: 5px;
+  }
 `;
 
 export const StatsContent = styled.div`
@@ -78,6 +122,13 @@ export const StatsContent = styled.div`
   color: #020166;
   align-content: top;
   margin-top: -12px;
+
+  @media (max-width: 768px) {
+    line-height: 5px;
+    margin-top: -20px;
+    text-align: center;
+    padding: none;
+  }
 `;
 
 
