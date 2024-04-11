@@ -13,15 +13,10 @@ import { colors } from '../../data/constants';
 
 const ToolBar: React.FC<{pageType: string}> = (props) => {
   const navigate = useNavigate();
-  const getHomeColor = (pageType: string) => {
-    if (props.pageType === 'Home'){
-      return colors.pressedPageButton;
-    }
-    else{
-      return colors.ToolBar;
-    }
-  }
-  const homeColor: string = useMemo(() => getHomeColor(props.pageType), [props.pageType]);
+
+  const homeColor: string = useMemo(() => {
+    return props.pageType === 'Home' ? colors.pressedPageButton : colors.ToolBar;
+  }, [props.pageType]);
 
   const onHomeClick = ()=> {
     navigate(paths.root);

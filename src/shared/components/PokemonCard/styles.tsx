@@ -12,6 +12,9 @@ export const StyledPokemonCard = styled.div<{inPokemonPage: boolean}>`
         background-color: #F7F7F9;
         height: auto;
     `}
+    @media (max-width: 768px) {
+      width: 285.29px;
+    }
 `;
 
 export const StyledPokemonButton = styled.button<{inPokemonPage: boolean}>`
@@ -42,12 +45,21 @@ export const StyledpokemonName = styled.p`
     font-weight: 400;
     text-align: center;
     margin-top: 1px;
+
+    @media (max-width: 768px) {
+      margin-top: -40px;
+    }
 `;
 
 export const StyledpokemonImg= styled.img`
     width: 170px;
     height: auto;
     margin-bottom: 10px;
+
+    @media (max-width: 768px) {
+      width: 250px;
+      margin-bottom: -20px;
+    }
 `;
 
 enum TypeColors {

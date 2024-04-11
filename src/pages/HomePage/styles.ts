@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   padding: 50px 50px;
+
 `;
 
 export const SearchContainer = styled.div`
@@ -26,6 +27,10 @@ export const SearchBar = styled.input`
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
   }
+
+  @media (max-width: 768px) {
+    width: 200px;
+  }
 `;
 export const SearchButton = styled.button`
   width: 87px;
@@ -47,7 +52,7 @@ export const SearchOption = styled.div`
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
-  letter-spacing: 0.10000000149011612px;
+  letter-spacing: 0.1px;
   text-align: left;
   color: #5A5A89;
 `;
@@ -58,6 +63,10 @@ export const PokemonGrid = styled.div`
   justify-content: center;  
   padding-top: 30px;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
 `;
 
 export const LoadMoreButton = styled.button`
@@ -84,8 +93,10 @@ export const SearchBarContainer = styled.div`
 export const FloatingContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: #5A5A89;
+  color: #FFFFFF;
   padding-top: 10px;
+  border-radius: 9px;
+  box-shadow: 4px 4px 20px 0px #00000012;
 `;
 
 export const LastSearchesTitle = styled.div`
