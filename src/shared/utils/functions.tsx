@@ -1,4 +1,4 @@
-import { Pokemon } from "../data/Pokemon";
+import { Pokemon } from "../data/types/Pokemon";
 
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);

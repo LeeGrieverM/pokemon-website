@@ -1,13 +1,13 @@
 import React, {useMemo} from 'react'
-import {Pokemon} from '../../data/Pokemon'
+import {Pokemon} from '../../data/types/Pokemon'
 import {useNavigate} from "react-router-dom";
 import { capitalizeFirstLetter, computePokemonNumber } from '../../utils/functions';
 import {
   StyledPokemonCard,
   StyledPokemonButton,
-  StyledpokemonId,
-  StyledpokemonName,
-  StyledpokemonImg,
+  StyledPokemonId,
+  StyledPokemonName,
+  StyledPokemonImg,
   TypesContainer,
   Type,
 } from './styles';
@@ -27,14 +27,14 @@ const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: bo
     <>
     <StyledPokemonCard className={props.className} inPokemonPage={inPokemonPage}>
     <StyledPokemonButton onClick={() => onPokemonClick()} disabled={inPokemonPage} inPokemonPage={inPokemonPage}>
-    <StyledpokemonId>
+    <StyledPokemonId>
       {pokemonId}
-    </StyledpokemonId>
-    <StyledpokemonImg src={props.pokemon.sprites.front_default} alt={props.pokemon.name}>
-    </StyledpokemonImg>
-    <StyledpokemonName>
+    </StyledPokemonId>
+    <StyledPokemonImg src={props.pokemon.sprites.front_default} alt={props.pokemon.name}>
+    </StyledPokemonImg>
+    <StyledPokemonName>
     {pokemonName}
-    </StyledpokemonName>
+    </StyledPokemonName>
     {inPokemonPage && ( 
       <TypesContainer>
         {props.pokemon.types.map((type, index) => (

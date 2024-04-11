@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const StyledPokemonCard = styled.div<{inPokemonPage: boolean}>`
-    displey: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 267.29px;
@@ -27,7 +27,7 @@ export const StyledPokemonButton = styled.button<{inPokemonPage: boolean}>`
     `}
 `;
 
-export const StyledpokemonId = styled.p`
+export const StyledPokemonId = styled.p`
     font-size: 22px;
     color: #373299;
     font-family: Roboto, sans-serif;
@@ -37,7 +37,7 @@ export const StyledpokemonId = styled.p`
     width: 100%;
 `;
 
-export const StyledpokemonName = styled.p`
+export const StyledPokemonName = styled.p`
     font-size: 32px;
     color: #373299;
     font-family: Roboto, sans-serif;
@@ -51,7 +51,7 @@ export const StyledpokemonName = styled.p`
     }
 `;
 
-export const StyledpokemonImg= styled.img`
+export const StyledPokemonImg= styled.img`
     width: 170px;
     height: auto;
     margin-bottom: 10px;
