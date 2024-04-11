@@ -4,10 +4,6 @@ export const ButtonsContainer = styled.div`
     height: 65px;
     float: right;
     display: flex;
-
-    @media (max-width: 768px) {
-        display: none;
-      }
 `;
 
 export const StyledToolBar = styled.div`
@@ -18,19 +14,14 @@ export const StyledToolBar = styled.div`
         display: flex;
         justify-content: center; 
         align-items: center; 
+        width: auto;
+        margin: auto;
         ${ButtonsContainer} {
           display: none;
         }
         background-color: transparent;
         padding-bottom: 40px;
-`;
-
-export const StyledContainer = styled.div`
-    padding: 0px 110px;
-
-    @media (max-width: 768px) {
-        padding: 0px;
-      }
+    }
 `;
 export const ImgContainer = styled.img`
     padding: 5px ;

@@ -15,5 +15,9 @@ export interface Pokemon {
   stats: PokemonStat[];
   types: PokemonType[];
   description: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  }
 }
   

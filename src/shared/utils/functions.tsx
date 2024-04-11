@@ -1,4 +1,5 @@
 import { Pokemon } from "../data/types/Pokemon";
+import { telAvivBounds } from "../data/constants";
 
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -6,6 +7,12 @@ export const capitalizeFirstLetter = (string: string) => {
 
 export const computePokemonNumber = (pokemonId: number) => {
   return '#'+ ('000'+pokemonId.toString()).slice(-3); 
+};
+
+const generateRandomLocation = () => {
+  const latitude = telAvivBounds.minLat + Math.random() * (telAvivBounds.maxLat - telAvivBounds.minLat);
+  const longitude = telAvivBounds.minLng + Math.random() * (telAvivBounds.maxLng - telAvivBounds.minLng);
+  return { latitude: latitude, longitude: longitude };
 };
 
 export const fetchData = async (offset: number) => {
@@ -31,6 +38,7 @@ export const fetchData = async (offset: number) => {
         name: type.type.name,
       })),
       description: description,
+      location: generateRandomLocation(),
     } as Pokemon;
   }));
   return results;

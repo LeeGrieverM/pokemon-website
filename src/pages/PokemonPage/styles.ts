@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div`
+export const ExpandedCard = styled.div`
   align-content: center;
   align-items: center;
   display: flex;
   width: 844px;
   height: 340px;
-  margin: auto;
-  margin-top: 70px;
+  margin: 50px auto 30px auto;
   background-color: #F7F7F9;
   box-shadow: 2px 2px 4px 0px #00000026; 
   border-radius: 8px;
@@ -18,6 +17,19 @@ export const StyledContainer = styled.div`
     height: 780px;
     margin-bottom: 40px;
     row-gap: 40px;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 844px;
+  height: 500px;
+  margin: auto;
+  @media (max-width: 768px) {
+  
   }
 `;
 
@@ -134,7 +146,23 @@ export const StatsContent = styled.div`
   }
 `;
 
-
+export const ShowDirectionsButton = styled.button`
+  width: 200px;
+  height: 36px;
+  border-radius: 9px;
+  background-color: #373299;
+  color: #f7f7f9;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  margin-top: -20px;
+  @media (max-width: 768px) {
+    
+  }
+`;
 
 
 
