@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import {Pokemon} from '../../shared/data/Pokemon';
+import React, { useState, useEffect, useMemo } from 'react';
+import {Pokemon} from '../../shared/data/types/Pokemon';
 import ToolBar from '../../shared/components/ToolBar/ToolBar';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
 import { fetchData } from '../../shared/utils/functions';
@@ -40,7 +40,7 @@ export default function HomePage() {
   fetchDataAndSetPokemonData();
 }, [offset, isMounted]);
 
-  // Filter Pokemon data based on search query
+
   const filteredPokemonData = useMemo(()=> { 
     return pokemonData.filter(pokemon =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -67,15 +67,13 @@ export default function HomePage() {
     addToLastSearches(searchQuery);
   };
  
-  // Add current search query to last searches
   const addToLastSearches = (search: string): void => {
     setLastSearches(prevSearches => {
       const updatedSearches = [...prevSearches.filter(s => s !== search), search];
-      return updatedSearches.length > 3 ? updatedSearches.slice(-3) : updatedSearches; // Keep only the last 3 searches
+      return updatedSearches.length > 3 ? updatedSearches.slice(-3) : updatedSearches; 
     });
   };
 
-  // Remove current search query from last searches
   const removeFromLastSearches = (search: string): void => {
     setLastSearches(prevSearches => prevSearches.filter(s => s !== search));
   };

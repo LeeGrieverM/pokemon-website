@@ -1,7 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
-import { PokemonStat } from '../../shared/data/Pokemon';
+import { PokemonStat } from '../../shared/data/types/Pokemon';
 import ToolBar from '../../shared/components/ToolBar/ToolBar';
 import { capitalizeFirstLetter } from '../../shared/utils/functions';
 

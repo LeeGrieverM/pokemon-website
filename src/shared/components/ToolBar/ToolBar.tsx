@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useMemo, FC } from 'react'
 import {useNavigate} from "react-router-dom";
 import {paths} from '../../data/constants';
 import {
@@ -11,7 +11,7 @@ import {
 import logo from '../../data/logo.svg';
 import { colors } from '../../data/constants';
 
-const ToolBar: React.FC<{pageType: string}> = (props) => {
+const ToolBar: FC<{pageType: string}> = (props) => {
   const navigate = useNavigate();
 
   const homeColor: string = useMemo(() => {
