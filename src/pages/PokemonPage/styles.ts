@@ -15,8 +15,9 @@ export const StyledContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     width: 320px;
-    height: 700px;
+    height: 780px;
     margin-bottom: 40px;
+    row-gap: 40px;
   }
 `;
 
@@ -38,12 +39,13 @@ export const LeftContainer = styled.div`
   @media (max-width: 768px) {
     &::after {
       top: auto; 
-      bottom: 10px; 
+      bottom: -50px; 
       right: 0;
       width: 100%; 
       height: 1.5px; 
       background-color: #D7D7D7; 
     }
+  }
 `;
 
 export const RightContainer = styled.div`
@@ -59,9 +61,10 @@ export const RightContainer = styled.div`
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     row-gap: 15px;
-    height: 310px;
+    height: 340px;
 
   }
 `;
