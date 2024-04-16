@@ -1,10 +1,10 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
 import { PokemonStat } from '../../shared/data/types/Pokemon';
 import ToolBar from '../../shared/components/ToolBar/ToolBar';
 import { capitalizeFirstLetter } from '../../shared/utils/functions';
-
+import Map from '../../shared/components/Map/Map';
 import {
   ExpandedCard,
   LeftContainer,
@@ -21,6 +21,7 @@ import {
 export default function PokemonPage() {
   const location = useLocation();
   const pokemon = location.state?.pokemon;
+  const [showMap, setShowMap] = useState(false);
 
   const formatStats = useCallback((startIndex: number) => {
     return pokemon.stats.slice(startIndex, startIndex + 3).map((stat: PokemonStat) =>
@@ -35,6 +36,10 @@ export default function PokemonPage() {
     </p>;
   }, [pokemon]);
 
+  const handleShowDirections = () => {
+    setShowMap(true);
+  };
+  
   return (
     <>
     <Container>
@@ -70,10 +75,11 @@ export default function PokemonPage() {
     </TextContainer>
     </RightContainer>
     </ExpandedCard>
-    <ShowDirectionsButton onClick={handleShowDirections()}>
+    <ShowDirectionsButton onClick={handleShowDirections}>
       Show Directions
     </ShowDirectionsButton>
-    </Container>
+    {showMap && <Map pokemonLocation={pokemon.location}/>}
+      </Container>
 
     </>
   )

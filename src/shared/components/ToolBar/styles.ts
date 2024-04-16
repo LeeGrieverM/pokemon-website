@@ -4,11 +4,15 @@ export const ButtonsContainer = styled.div`
     height: 65px;
     float: right;
     display: flex;
+    margin-right: 120px;
 `;
 
 export const StyledToolBar = styled.div`
+    display: flex;
+    justify-content: space-between;
     height: 65px;
     background-color: #020166;
+    width: 100%;
 
     @media (max-width: 768px) {
         display: flex;
@@ -25,7 +29,7 @@ export const StyledToolBar = styled.div`
 `;
 export const ImgContainer = styled.img`
     padding: 5px ;
-
+    margin-left: 120px;
     @media (max-width: 768px) {
         padding-top: 80px;
         width: 300px; 

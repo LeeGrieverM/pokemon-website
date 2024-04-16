@@ -1,5 +1,5 @@
-import { Pokemon } from "../data/types/Pokemon";
-import { telAvivBounds } from "../data/constants";
+import { Pokemon, PokemonLocation } from "../data/types/Pokemon";
+import { telAvivBounds, moveoLocation } from "../data/constants";
 
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -12,7 +12,7 @@ export const computePokemonNumber = (pokemonId: number) => {
 const generateRandomLocation = () => {
   const latitude = telAvivBounds.minLat + Math.random() * (telAvivBounds.maxLat - telAvivBounds.minLat);
   const longitude = telAvivBounds.minLng + Math.random() * (telAvivBounds.maxLng - telAvivBounds.minLng);
-  return { latitude: latitude, longitude: longitude };
+  return { latitude: latitude, longitude: longitude}  as PokemonLocation;
 };
 
 export const fetchData = async (offset: number) => {
@@ -46,3 +46,24 @@ export const fetchData = async (offset: number) => {
   console.error('Error fetching data:', error);
 }
 };
+
+export const addDirections = (map: google.maps.Map | null, pokemonLocation: PokemonLocation)=> {
+  const directionsService = new google.maps.DirectionsService();
+  const directionsRenderer = new google.maps.DirectionsRenderer({
+    map: map,
+  });
+
+  const request: google.maps.DirectionsRequest = {
+    origin: new google.maps.LatLng(pokemonLocation.latitude, pokemonLocation.longitude),
+    destination: new google.maps.LatLng(moveoLocation.latitude, moveoLocation.longitude),
+    travelMode: google.maps.TravelMode.DRIVING,
+  };
+
+  directionsService.route(request, (result, status) => {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsRenderer.setDirections(result);
+    } else {
+      console.error("Error fetching directions:", status);
+    }
+  });
+}
