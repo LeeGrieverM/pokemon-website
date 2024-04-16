@@ -78,7 +78,7 @@ export default function PokemonPage() {
     <ShowDirectionsButton onClick={handleShowDirections}>
     {showMap ? 'Hide Directions' : 'Show Directions'} 
     </ShowDirectionsButton>
-    {showMap && <Map pokemonLocation={pokemon.location}/>}
+    {showMap && <Map pokemon={pokemon}/>}
       </Container>
 
     </>

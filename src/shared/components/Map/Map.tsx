@@ -1,11 +1,11 @@
 import React, {FC, useEffect, useRef, useState} from 'react'
 import { Loader } from '@googlemaps/js-api-loader';
-import { PokemonLocation } from '../../data/types/Pokemon';
+import { Pokemon, PokemonLocation } from '../../data/types/Pokemon';
 import { mapOptions } from '../../data/constants';
 import { addDirections } from '../../utils/functions';
+import { MapContainer } from './styles';
 
-
-const Map: FC<{ pokemonLocation: PokemonLocation }> = ({ pokemonLocation }) => {
+const Map: FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
 
@@ -26,7 +26,7 @@ const Map: FC<{ pokemonLocation: PokemonLocation }> = ({ pokemonLocation }) => {
 
         addDirections(
           map,
-          pokemonLocation,
+          pokemon,
         );
       } catch (error) {
         console.error("Error loading Google Maps API:", error);
@@ -34,13 +34,11 @@ const Map: FC<{ pokemonLocation: PokemonLocation }> = ({ pokemonLocation }) => {
     };
 
     fetchMap();
-  }, [pokemonLocation]);
+  }, [pokemon.location]);
 
 
   return (
-    <>
-    <div ref={mapRef} style={{ height: "400px", width: "100%" }}></div>
-    </>
+    <MapContainer ref={mapRef}/>
 
   )
 }

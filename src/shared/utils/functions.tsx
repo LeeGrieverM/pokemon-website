@@ -58,14 +58,30 @@ export const fetchData = async (offset: number) => {
 }
 };
 
-export const addDirections = (map: google.maps.Map | null, pokemonLocation: PokemonLocation)=> {
+export const addDirections = (map: google.maps.Map | null, pokemon: Pokemon)=> {
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer({
+    map: map,
+    suppressMarkers: true,
+  });
+
+  new google.maps.Marker({
+    position: { lat: pokemon.location.latitude, lng: pokemon.location.longitude },
+    map: map,
+    icon: {
+      url: pokemon.sprites.front_default, 
+      scaledSize: new google.maps.Size(70, 70), 
+      anchor: new google.maps.Point(30, 25),
+    },
+  });
+
+  new google.maps.Marker({
+    position: { lat: moveoLocation.latitude, lng: moveoLocation.longitude },
     map: map,
   });
 
   const request: google.maps.DirectionsRequest = {
-    origin: new google.maps.LatLng(pokemonLocation.latitude, pokemonLocation.longitude),
+    origin: new google.maps.LatLng(pokemon.location.latitude, pokemon.location.longitude),
     destination: new google.maps.LatLng(moveoLocation.latitude, moveoLocation.longitude),
     travelMode: google.maps.TravelMode.DRIVING,
   };
