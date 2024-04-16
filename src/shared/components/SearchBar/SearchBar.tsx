@@ -22,7 +22,6 @@ import {
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         handleSearch(event.target.value);
-        // setSearchQuery(event.target.value); 
       };
     
       const handleSearchFocus = (): void => {

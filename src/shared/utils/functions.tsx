@@ -15,13 +15,18 @@ const generateRandomLocation = () => {
   return { latitude: latitude, longitude: longitude}  as PokemonLocation;
 };
 
+const generateLocalStorageKey = (pokemonDataId: number, prefix: string = 'pokemonLocation') => {
+  return `${prefix}_${pokemonDataId}`;
+};
+
 export const getPokemonLocation = (pokemonDataId: number) => {
-  const storedLocation = localStorage.getItem(`pokemonLocation_${pokemonDataId}`);
+  const storageKey = generateLocalStorageKey(pokemonDataId);
+  const storedLocation = localStorage.getItem(storageKey);
   if (storedLocation) {
     return JSON.parse(storedLocation);
   } else {
     const location = generateRandomLocation();
-    localStorage.setItem(`pokemonLocation_${pokemonDataId}`, JSON.stringify(location));
+    localStorage.setItem(storageKey, JSON.stringify(location));
     return location;
   }
 };
