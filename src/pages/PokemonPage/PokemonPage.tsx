@@ -37,7 +37,7 @@ export default function PokemonPage() {
   }, [pokemon]);
 
   const handleShowDirections = () => {
-    setShowMap(true);
+    setShowMap((showMap) => !showMap);
   };
   
   return (
@@ -76,7 +76,7 @@ export default function PokemonPage() {
     </RightContainer>
     </ExpandedCard>
     <ShowDirectionsButton onClick={handleShowDirections}>
-      Show Directions
+    {showMap ? 'Hide Directions' : 'Show Directions'} 
     </ShowDirectionsButton>
     {showMap && <Map pokemonLocation={pokemon.location}/>}
       </Container>

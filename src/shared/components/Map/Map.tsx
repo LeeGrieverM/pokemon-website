@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef, useState} from 'react'
 import { Loader } from '@googlemaps/js-api-loader';
 import { PokemonLocation } from '../../data/types/Pokemon';
-import { moveoLocation, mapOptions } from '../../data/constants';
+import { mapOptions } from '../../data/constants';
 import { addDirections } from '../../utils/functions';
 
 

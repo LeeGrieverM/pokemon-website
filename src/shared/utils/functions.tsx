@@ -15,6 +15,17 @@ const generateRandomLocation = () => {
   return { latitude: latitude, longitude: longitude}  as PokemonLocation;
 };
 
+export const getPokemonLocation = (pokemonDataId: number) => {
+  const storedLocation = localStorage.getItem(`pokemonLocation_${pokemonDataId}`);
+  if (storedLocation) {
+    return JSON.parse(storedLocation);
+  } else {
+    const location = generateRandomLocation();
+    localStorage.setItem(`pokemonLocation_${pokemonDataId}`, JSON.stringify(location));
+    return location;
+  }
+};
+
 export const fetchData = async (offset: number) => {
   try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`);
@@ -25,7 +36,7 @@ export const fetchData = async (offset: number) => {
       const speciesResponse = await fetch(pokemonData.species.url);
       const speciesData = await speciesResponse.json();
       const description = speciesData.flavor_text_entries.find((entry: any) => entry.language.name === 'en')?.flavor_text;
-      
+
     return {
       id: pokemonData.id,
       name: pokemonData.name,
@@ -38,7 +49,7 @@ export const fetchData = async (offset: number) => {
         name: type.type.name,
       })),
       description: description,
-      location: generateRandomLocation(),
+      location: getPokemonLocation(pokemonData.id),
     } as Pokemon;
   }));
   return results;

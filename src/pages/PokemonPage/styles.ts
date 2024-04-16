@@ -27,7 +27,6 @@ export const Container = styled.div`
   flex-direction: column;
   height: auto;
   margin: auto;
-  border: 5px solid pink;
   @media (max-width: 768px) {
   
   }
