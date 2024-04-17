@@ -6,6 +6,11 @@ export interface PokemonStat {
   value: number;
 }
 
+export interface PokemonLocation {
+  latitude: number;
+  longitude: number;
+}
+
 export interface Pokemon {
   id: number;
   name: string;
@@ -15,5 +20,6 @@ export interface Pokemon {
   stats: PokemonStat[];
   types: PokemonType[];
   description: string;
+  location: PokemonLocation;
 }
   

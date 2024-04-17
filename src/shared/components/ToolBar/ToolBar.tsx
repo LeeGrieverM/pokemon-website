@@ -4,7 +4,6 @@ import {paths} from '../../data/constants';
 import {
   StyledButton,
   StyledToolBar, 
-  StyledContainer, 
   ImgContainer, 
   ButtonsContainer
 } from './styles';
@@ -24,7 +23,6 @@ const ToolBar: FC<{pageType: string}> = (props) => {
 
   return (
     <StyledToolBar>
-      <StyledContainer>
       <ImgContainer src={logo} alt='pokedex-logo' className='logo'/>
       <ButtonsContainer>
       <StyledButton color={homeColor} onClick={()=>onHomeClick()}>
@@ -34,8 +32,6 @@ const ToolBar: FC<{pageType: string}> = (props) => {
         Favorites
       </StyledButton>
       </ButtonsContainer>
-      
-      </StyledContainer>
       </StyledToolBar>
 
   )

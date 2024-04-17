@@ -13,7 +13,8 @@ export const StyledPokemonCard = styled.div<{inPokemonPage: boolean}>`
         height: auto;
     `}
     @media (max-width: 768px) {
-      width: 285.29px;
+      width: 300px;
+      height: 310px;
     }
 `;
 
@@ -31,7 +32,7 @@ export const StyledPokemonId = styled.p`
     font-size: 22px;
     color: #373299;
     font-family: Roboto, sans-serif;
-    line-height: 1px;
+    line-height: 0px;
     font-weight: 400;
     text-align: left;
     width: 100%;
@@ -47,7 +48,7 @@ export const StyledPokemonName = styled.p`
     margin-top: 1px;
 
     @media (max-width: 768px) {
-      margin-top: -40px;
+      margin-top: -10px;
     }
 `;
 
@@ -58,7 +59,7 @@ export const StyledPokemonImg= styled.img`
 
     @media (max-width: 768px) {
       width: 250px;
-      margin-bottom: -20px;
+      margin-bottom: -5px;
     }
 `;
 

@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react'
+import React, {useMemo, FC} from 'react'
 import {Pokemon} from '../../data/types/Pokemon'
 import {useNavigate} from "react-router-dom";
 import { capitalizeFirstLetter, computePokemonNumber } from '../../utils/functions';
@@ -12,7 +12,7 @@ import {
   Type,
 } from './styles';
 
-const PokemonCard: React.FC<{className: any, pokemon: Pokemon, inPokemonPage: boolean}> = (props) => {
+const PokemonCard: FC<{className: any, pokemon: Pokemon, inPokemonPage: boolean}> = (props) => {
   const { inPokemonPage, pokemon } = props;
   const navigate = useNavigate();
 

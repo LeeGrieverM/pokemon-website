@@ -1,12 +1,12 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import PokemonCard from '../../shared/components/PokemonCard/PokemonCard';
 import { PokemonStat } from '../../shared/data/types/Pokemon';
 import ToolBar from '../../shared/components/ToolBar/ToolBar';
 import { capitalizeFirstLetter } from '../../shared/utils/functions';
-
+import Map from '../../shared/components/Map/Map';
 import {
-  StyledContainer,
+  ExpandedCard,
   LeftContainer,
   RightContainer,
   TextContainer,
@@ -14,11 +14,14 @@ import {
   DescriptionContent,
   StatsContentContainer,
   StatsContent,
+  ShowDirectionsButton,
+  Container,
 } from './styles';
 
 export default function PokemonPage() {
   const location = useLocation();
   const pokemon = location.state?.pokemon;
+  const [showMap, setShowMap] = useState(false);
 
   const formatStats = useCallback((startIndex: number) => {
     return pokemon.stats.slice(startIndex, startIndex + 3).map((stat: PokemonStat) =>
@@ -33,10 +36,15 @@ export default function PokemonPage() {
     </p>;
   }, [pokemon]);
 
+  const handleShowDirections = () => {
+    setShowMap((showMap) => !showMap);
+  };
+  
   return (
     <>
+    <Container>
     <ToolBar pageType='Pokemon'/>
-    <StyledContainer>
+    <ExpandedCard>
     <LeftContainer>
       <PokemonCard pokemon={pokemon} className={'pokemon-card'} inPokemonPage={true}/>
     </LeftContainer>
@@ -66,7 +74,13 @@ export default function PokemonPage() {
       </StatsContentContainer>
     </TextContainer>
     </RightContainer>
-    </StyledContainer>
+    </ExpandedCard>
+    <ShowDirectionsButton onClick={handleShowDirections}>
+    {showMap ? 'Hide Directions' : 'Show Directions'} 
+    </ShowDirectionsButton>
+    {showMap && <Map pokemon={pokemon}/>}
+      </Container>
+
     </>
   )
 }
