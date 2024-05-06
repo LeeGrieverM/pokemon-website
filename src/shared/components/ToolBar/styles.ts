@@ -34,6 +34,7 @@ export const ImgContainer = styled.img`
         padding-top: 80px;
         width: 300px; 
         height: auto;
+        margin-left: 0;
       }
 `;
 

@@ -1,7 +1,8 @@
 
 export const paths = {
     root: "/",
-    pokemon: "/pokemon/:pokemonId"
+    pokemon: "/pokemon/:pokemonId",
+    favorites: "/favorites"
 };
 
 export const colors = {
