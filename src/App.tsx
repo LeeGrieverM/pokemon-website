@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
 import HomePage from './pages/HomePage/HomePage';
 import PokemonPage from './pages/PokemonPage/PokemonPage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import {paths} from './shared/data/constants';
 
 function App() {
@@ -20,6 +21,12 @@ function App() {
                 path={`${paths.pokemon}`}
                 element={
                     <PokemonPage />
+                }
+            />
+            <Route
+                path={`${paths.favorites}`}
+                element={
+                    <FavoritesPage />
                 }
             />
         </Routes>
